@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import com.br.gc.pds.model.Lixeiras.Lixeira;
+
 public class TCPClienteBuilder {
-	private TCPCliente cliente;
+	private ITCPClient cliente;
 	
 	public TCPClienteBuilder(){
-		this.cliente = new TCPCliente();
+		this.cliente = new GarbageCollectorCliente();
 	}
 	
 	public TCPClienteBuilder serverHost(String serverHost){
@@ -23,7 +25,7 @@ public class TCPClienteBuilder {
 		return this;
 	}
 	
-	public TCPCliente build() throws UnknownHostException, IOException{
+	public ITCPClient build() throws UnknownHostException, IOException{
 		Socket socket = new Socket(
 				this.cliente.getServerHost(),
 				this.cliente.getServerPort());

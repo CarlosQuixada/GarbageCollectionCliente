@@ -12,7 +12,7 @@ public class Cliente {
 		proxy.enviarMensagem(mensagem);
 	}
 	
-	public String receberResposta(){
+	public Object receberResposta(){
 		return proxy.receberMensagem();
 	}
 }

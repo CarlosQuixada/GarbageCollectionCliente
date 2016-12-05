@@ -3,11 +3,11 @@ package com.br.gc.pds.net;
 import java.io.IOException;
 
 public class Proxy {
-	TCPCliente cliente;
+	ITCPClient cliente;
 
 	public Proxy() {
 		try {
-			cliente = TCPCliente.Builder().serverHost("192.168.1.9").serverPort(2008).build();
+			cliente = GarbageCollectorCliente.Builder().serverHost("127.0.0.1").serverPort(9090).build();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -17,7 +17,7 @@ public class Proxy {
 		cliente.sendRequest(mensagem);
 	}
 
-	public String receberMensagem() {
+	public Object receberMensagem() {
 		return cliente.getResponse();
 	}
 }

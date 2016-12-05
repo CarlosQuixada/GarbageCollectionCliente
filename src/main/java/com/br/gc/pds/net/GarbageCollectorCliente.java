@@ -5,7 +5,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class TCPCliente {
+import com.br.gc.pds.model.Lixeiras.ListaLixeira;
+import com.br.gc.pds.model.Rotas.ListaRota;
+
+public class GarbageCollectorCliente implements ITCPClient {
 	private String serverHost;
 	private int serverPort;
 	private Socket socket;
@@ -44,6 +47,7 @@ public class TCPCliente {
 		return new TCPClienteBuilder();
 	}
 
+	@Override
 	public void sendRequest(String request) {
 		try {
 			this.out.writeUTF(request);
@@ -51,22 +55,35 @@ public class TCPCliente {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public Object getResponse() {
 
-	public String getResponse() {
 		try {
-			String response = this.in.readUTF();
-			if(response.equals("Conexão Encerrada")){
-				close();
+			ListaRota listaRota = ListaRota.parseFrom(socket.getInputStream());
+			return listaRota;
+		} catch (Exception e) {
+			try {
+				ListaLixeira listaLixeira = ListaLixeira.parseFrom(socket.getInputStream());
+				return listaLixeira;
+			} catch (Exception e2) {
+				String response;
+				try {
+					response = this.in.readUTF();
+					return response;
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 			}
-			return response;
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		return null;
 	}
-	
-	private void close(){
+
+	@Override
+	public void close() {
 		try {
 			this.socket.close();
 		} catch (IOException e) {

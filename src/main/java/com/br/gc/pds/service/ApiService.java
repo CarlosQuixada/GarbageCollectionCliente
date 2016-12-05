@@ -25,6 +25,6 @@ public class ApiService {
 		String posicaoA = "-3.765529,-38.637767";
 		String posicaoB = "-3.720905,-38.510949";
 		String arguments =posicaoA+"**"+posicaoB;
-		String pacote = requisicao.doOperations("Distancia", "calcularDistancia", arguments);
+		ListaLixeira listaLixeira = (ListaLixeira) requisicao.doOperations("Distancia", "calcularDistancia", arguments);
 	}
 }
