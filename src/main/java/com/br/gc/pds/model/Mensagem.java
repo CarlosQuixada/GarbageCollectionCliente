@@ -7,7 +7,7 @@ public class Mensagem {
 	private int requestId;
 	private String objectReference;
 	private String methodId;
-	private String arguments;
+	private List<String> arguments;
 	
 	public int getMessageType() {
 		return messageType;
@@ -41,18 +41,24 @@ public class Mensagem {
 		this.methodId = methodId;
 	}
 
-	public String getArguments() {
-		return arguments;
-	}
 
-	public void setArguments(String arguments) {
+	public void setArguments(List<String> arguments) {
 		this.arguments = arguments;
 	}
 
 	@Override
 	public String toString() {
+		String args = "";
+		if(!arguments.isEmpty()){
+			for(String a : arguments){
+				args += a + "**";
+			}
+			
+			args = args.substring(0, args.length() - 2);
+		}
+		
 		return ""+ messageType+";"+ requestId + ";"
-				+ objectReference + ";" + methodId + ";" + arguments;
+				+ objectReference + ";" + methodId + ";" + args;
 	}
 
 }

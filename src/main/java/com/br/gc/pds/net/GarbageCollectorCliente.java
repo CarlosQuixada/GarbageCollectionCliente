@@ -1,18 +1,15 @@
 package com.br.gc.pds.net;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import com.br.gc.pds.model.Lixeiras.ListaLixeira;
-import com.br.gc.pds.model.Rotas.ListaRota;
+import org.apache.commons.io.IOUtils;
 
-public class GarbageCollectorCliente implements ITCPClient {
+public class GarbageCollectorCliente {
 	private String serverHost;
 	private int serverPort;
 	private Socket socket;
-	private DataInputStream in;
 	private DataOutputStream out;
 
 	public String getServerHost() {
@@ -35,10 +32,6 @@ public class GarbageCollectorCliente implements ITCPClient {
 		this.socket = socket;
 	}
 
-	public void setIn(DataInputStream in) {
-		this.in = in;
-	}
-
 	public void setOut(DataOutputStream out) {
 		this.out = out;
 	}
@@ -47,7 +40,6 @@ public class GarbageCollectorCliente implements ITCPClient {
 		return new TCPClienteBuilder();
 	}
 
-	@Override
 	public void sendRequest(String request) {
 		try {
 			this.out.writeUTF(request);
@@ -56,33 +48,16 @@ public class GarbageCollectorCliente implements ITCPClient {
 		}
 	}
 	
-	@Override
-	public Object getResponse() {
-
+	public byte[] getResponse() {
 		try {
-			ListaRota listaRota = ListaRota.parseFrom(socket.getInputStream());
-			return listaRota;
-		} catch (Exception e) {
-			try {
-				ListaLixeira listaLixeira = ListaLixeira.parseFrom(socket.getInputStream());
-				return listaLixeira;
-			} catch (Exception e2) {
-				String response;
-				try {
-					response = this.in.readUTF();
-					return response;
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-			}
+			byte[] resposta = IOUtils.toByteArray(socket.getInputStream());
+			return resposta;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
 		return null;
 	}
 
-	@Override
 	public void close() {
 		try {
 			this.socket.close();

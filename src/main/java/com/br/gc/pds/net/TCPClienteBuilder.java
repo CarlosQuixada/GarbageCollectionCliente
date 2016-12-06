@@ -1,15 +1,12 @@
 package com.br.gc.pds.net;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.br.gc.pds.model.Lixeiras.Lixeira;
-
 public class TCPClienteBuilder {
-	private ITCPClient cliente;
+	private GarbageCollectorCliente cliente;
 	
 	public TCPClienteBuilder(){
 		this.cliente = new GarbageCollectorCliente();
@@ -25,15 +22,14 @@ public class TCPClienteBuilder {
 		return this;
 	}
 	
-	public ITCPClient build() throws UnknownHostException, IOException{
+	public GarbageCollectorCliente build() throws UnknownHostException, IOException{
 		Socket socket = new Socket(
 				this.cliente.getServerHost(),
 				this.cliente.getServerPort());
 		
-		DataInputStream in = new DataInputStream(socket.getInputStream());
 		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 		
-		cliente.setIn(in);
+		
 		cliente.setOut(out);
 		cliente.setSocket(socket);
 		
