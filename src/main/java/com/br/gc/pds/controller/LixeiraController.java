@@ -14,18 +14,17 @@ import com.br.gc.pds.net.Proxy;
 @Controller
 public class LixeiraController {
 	
-	@Autowired
-	private Proxy proxy;
-	
 	@RequestMapping("/listarLixeiras")
 	public String listarLixeiras(Model model){
+		Proxy proxy = new Proxy();
 		List<Lixeira> lixeiras = proxy.buscarLixeira();
 		model.addAttribute("lixeiras",lixeiras);
 		return "lixeira/listarLixeiras";
 	}
 	
-	@RequestMapping("/clacularRota")
+	@RequestMapping("/calcularRota")
 	public String calcularRota(Model model){
+		Proxy proxy = new Proxy();
 		List<Rota> listaRota = proxy.calcularRota();
 		model.addAttribute("listaRota",listaRota);
 		return"";

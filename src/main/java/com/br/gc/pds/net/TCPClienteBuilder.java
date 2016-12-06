@@ -1,7 +1,9 @@
 package com.br.gc.pds.net;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -27,7 +29,9 @@ public class TCPClienteBuilder {
 				this.cliente.getServerHost(),
 				this.cliente.getServerPort());
 		
-		DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+		BufferedWriter out = 
+				new BufferedWriter(
+						new OutputStreamWriter(socket.getOutputStream()));
 		
 		
 		cliente.setOut(out);

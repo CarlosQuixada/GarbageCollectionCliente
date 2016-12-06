@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.br.gc.pds.model.Lixeiras.ListaLixeira;
 import com.br.gc.pds.model.Lixeiras.Lixeira;
 import com.br.gc.pds.model.Mensagem;
@@ -11,15 +13,15 @@ import com.br.gc.pds.model.Rotas.ListaRota;
 import com.br.gc.pds.model.Rotas.Rota;
 import com.google.protobuf.InvalidProtocolBufferException;
 
+@Service
 public class Proxy {
 	GarbageCollectorCliente cliente;
 	private Mensagem mensagem;
 	
-	
-	
 	public List<Lixeira> buscarLixeira() {
 		mensagem = empacotar("Lixeira", "getLixeiras",new ArrayList<String>());
 		List<Lixeira> listaLixeira;
+		System.out.println(mensagem.toString());
 		try {
 			listaLixeira = ListaLixeira.parseFrom(doOperations(mensagem)).getLixeiraList();
 			return listaLixeira;
@@ -45,6 +47,7 @@ public class Proxy {
 		
 		
 		mensagem = empacotar("Rota","calcularRota", pontosLixeira);
+		System.out.println(mensagem.toString());
 		List<Rota> listaRota;
 		try {
 			listaRota = ListaRota.parseFrom(doOperations(mensagem)).getRotaList();
@@ -58,9 +61,9 @@ public class Proxy {
 	
 	public byte[] doOperations(Mensagem mensagem){
 		try {
-			cliente.Builder().serverHost("127.0.0.1").serverPort(9090).build();
+			this.cliente = new TCPClienteBuilder().serverHost("127.0.0.1").serverPort(2051).build();
 			cliente.sendRequest(mensagem.toString());
-			
+			System.out.println(mensagem.toString());
 			return cliente.getResponse();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -75,8 +78,6 @@ public class Proxy {
 		mensagem.setArguments(arguments);
 		mensagem.setMethodId(methodId);
 		mensagem.setObjectReference(objectReference);
-		mensagem.setRequestId(1);
-		mensagem.setMessageType(0);
 		
 		return mensagem;
 	}

@@ -1,5 +1,6 @@
 package com.br.gc.pds.net;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -10,7 +11,7 @@ public class GarbageCollectorCliente {
 	private String serverHost;
 	private int serverPort;
 	private Socket socket;
-	private DataOutputStream out;
+	private BufferedWriter out;
 
 	public String getServerHost() {
 		return serverHost;
@@ -32,7 +33,7 @@ public class GarbageCollectorCliente {
 		this.socket = socket;
 	}
 
-	public void setOut(DataOutputStream out) {
+	public void setOut(BufferedWriter out) {
 		this.out = out;
 	}
 
@@ -42,7 +43,8 @@ public class GarbageCollectorCliente {
 
 	public void sendRequest(String request) {
 		try {
-			this.out.writeUTF(request);
+			this.out.write(request, 0, request.length());
+			this.out.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

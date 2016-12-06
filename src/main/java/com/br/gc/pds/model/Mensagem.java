@@ -57,8 +57,7 @@ public class Mensagem {
 			args = args.substring(0, args.length() - 2);
 		}
 		
-		return ""+ messageType+";"+ requestId + ";"
-				+ objectReference + ";" + methodId + ";" + args;
+		return objectReference + ";" + methodId + ";" + args;
 	}
 
 }

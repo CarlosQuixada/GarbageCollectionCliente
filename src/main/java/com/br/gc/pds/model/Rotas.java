@@ -6,13 +6,7 @@ package com.br.gc.pds.model;
 public final class Rotas {
   private Rotas() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface PassoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Passo)
@@ -63,30 +57,37 @@ public final class Rotas {
   /**
    * Protobuf type {@code Passo}
    */
-  public  static final class Passo extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class Passo extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:Passo)
       PassoOrBuilder {
     // Use Passo.newBuilder() to construct.
-    private Passo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Passo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Passo() {
-      instrucao_ = "";
-      distancia_ = "";
-      tempo_ = "";
+    private Passo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Passo defaultInstance;
+    public static Passo getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Passo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private Passo(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -129,7 +130,7 @@ public final class Rotas {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -140,16 +141,31 @@ public final class Rotas {
       return Rotas.internal_static_Passo_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Rotas.internal_static_Passo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               Rotas.Passo.class, Rotas.Passo.Builder.class);
     }
 
+    public static com.google.protobuf.Parser<Passo> PARSER =
+        new com.google.protobuf.AbstractParser<Passo>() {
+      public Passo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Passo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Passo> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     public static final int INSTRUCAO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object instrucao_;
+    private java.lang.Object instrucao_;
     /**
      * <code>required string instrucao = 1;</code>
      */
@@ -191,7 +207,7 @@ public final class Rotas {
     }
 
     public static final int DISTANCIA_FIELD_NUMBER = 2;
-    private volatile java.lang.Object distancia_;
+    private java.lang.Object distancia_;
     /**
      * <code>required string distancia = 2;</code>
      */
@@ -233,7 +249,7 @@ public final class Rotas {
     }
 
     public static final int TEMPO_FIELD_NUMBER = 3;
-    private volatile java.lang.Object tempo_;
+    private java.lang.Object tempo_;
     /**
      * <code>required string tempo = 3;</code>
      */
@@ -274,6 +290,11 @@ public final class Rotas {
       }
     }
 
+    private void initFields() {
+      instrucao_ = "";
+      distancia_ = "";
+      tempo_ = "";
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -298,90 +319,47 @@ public final class Rotas {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, instrucao_);
+        output.writeBytes(1, getInstrucaoBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, distancia_);
+        output.writeBytes(2, getDistanciaBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, tempo_);
+        output.writeBytes(3, getTempoBytes());
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, instrucao_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getInstrucaoBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, distancia_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDistanciaBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, tempo_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getTempoBytes());
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Rotas.Passo)) {
-        return super.equals(obj);
-      }
-      Rotas.Passo other = (Rotas.Passo) obj;
-
-      boolean result = true;
-      result = result && (hasInstrucao() == other.hasInstrucao());
-      if (hasInstrucao()) {
-        result = result && getInstrucao()
-            .equals(other.getInstrucao());
-      }
-      result = result && (hasDistancia() == other.hasDistancia());
-      if (hasDistancia()) {
-        result = result && getDistancia()
-            .equals(other.getDistancia());
-      }
-      result = result && (hasTempo() == other.hasTempo());
-      if (hasTempo()) {
-        result = result && getTempo()
-            .equals(other.getTempo());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasInstrucao()) {
-        hash = (37 * hash) + INSTRUCAO_FIELD_NUMBER;
-        hash = (53 * hash) + getInstrucao().hashCode();
-      }
-      if (hasDistancia()) {
-        hash = (37 * hash) + DISTANCIA_FIELD_NUMBER;
-        hash = (53 * hash) + getDistancia().hashCode();
-      }
-      if (hasTempo()) {
-        hash = (37 * hash) + TEMPO_FIELD_NUMBER;
-        hash = (53 * hash) + getTempo().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static Rotas.Passo parseFrom(
@@ -407,57 +385,46 @@ public final class Rotas {
     }
     public static Rotas.Passo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.Passo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static Rotas.Passo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static Rotas.Passo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static Rotas.Passo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.Passo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(Rotas.Passo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -465,7 +432,7 @@ public final class Rotas {
      * Protobuf type {@code Passo}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Passo)
         Rotas.PassoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -473,7 +440,7 @@ public final class Rotas {
         return Rotas.internal_static_Passo_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Rotas.internal_static_Passo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -486,15 +453,18 @@ public final class Rotas {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         instrucao_ = "";
@@ -504,6 +474,10 @@ public final class Rotas {
         tempo_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -544,32 +518,6 @@ public final class Rotas {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof Rotas.Passo) {
           return mergeFrom((Rotas.Passo)other);
@@ -596,19 +544,21 @@ public final class Rotas {
           tempo_ = other.tempo_;
           onChanged();
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasInstrucao()) {
+          
           return false;
         }
         if (!hasDistancia()) {
+          
           return false;
         }
         if (!hasTempo()) {
+          
           return false;
         }
         return true;
@@ -623,7 +573,7 @@ public final class Rotas {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (Rotas.Passo) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -860,67 +810,21 @@ public final class Rotas {
         onChanged();
         return this;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:Passo)
     }
 
-    // @@protoc_insertion_point(class_scope:Passo)
-    private static final Rotas.Passo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Rotas.Passo();
+      defaultInstance = new Passo(true);
+      defaultInstance.initFields();
     }
 
-    public static Rotas.Passo getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Passo>
-        PARSER = new com.google.protobuf.AbstractParser<Passo>() {
-      public Passo parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Passo(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Passo> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Passo> getParserForType() {
-      return PARSER;
-    }
-
-    public Rotas.Passo getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:Passo)
   }
 
   public interface RotaOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Rota)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int32 idRota = 1;</code>
-     */
-    boolean hasIdRota();
-    /**
-     * <code>required int32 idRota = 1;</code>
-     */
-    int getIdRota();
 
     /**
      * <code>required string enderecoOrigem = 2;</code>
@@ -991,32 +895,37 @@ public final class Rotas {
   /**
    * Protobuf type {@code Rota}
    */
-  public  static final class Rota extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class Rota extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:Rota)
       RotaOrBuilder {
     // Use Rota.newBuilder() to construct.
-    private Rota(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private Rota(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Rota() {
-      idRota_ = 0;
-      enderecoOrigem_ = "";
-      enderecoDestino_ = "";
-      tamanho_ = "";
-      passo_ = java.util.Collections.emptyList();
+    private Rota(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Rota defaultInstance;
+    public static Rota getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Rota getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private Rota(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1035,36 +944,30 @@ public final class Rotas {
               }
               break;
             }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              idRota_ = input.readInt32();
-              break;
-            }
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               enderecoOrigem_ = bs;
               break;
             }
             case 26: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               enderecoDestino_ = bs;
               break;
             }
             case 34: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               tamanho_ = bs;
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 passo_ = new java.util.ArrayList<Rotas.Passo>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
-              passo_.add(
-                  input.readMessage(Rotas.Passo.PARSER, extensionRegistry));
+              passo_.add(input.readMessage(Rotas.Passo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1073,9 +976,9 @@ public final class Rotas {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           passo_ = java.util.Collections.unmodifiableList(passo_);
         }
         this.unknownFields = unknownFields.build();
@@ -1087,36 +990,36 @@ public final class Rotas {
       return Rotas.internal_static_Rota_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Rotas.internal_static_Rota_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               Rotas.Rota.class, Rotas.Rota.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int IDROTA_FIELD_NUMBER = 1;
-    private int idRota_;
-    /**
-     * <code>required int32 idRota = 1;</code>
-     */
-    public boolean hasIdRota() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 idRota = 1;</code>
-     */
-    public int getIdRota() {
-      return idRota_;
+    public static com.google.protobuf.Parser<Rota> PARSER =
+        new com.google.protobuf.AbstractParser<Rota>() {
+      public Rota parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Rota(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Rota> getParserForType() {
+      return PARSER;
     }
 
+    private int bitField0_;
     public static final int ENDERECOORIGEM_FIELD_NUMBER = 2;
-    private volatile java.lang.Object enderecoOrigem_;
+    private java.lang.Object enderecoOrigem_;
     /**
      * <code>required string enderecoOrigem = 2;</code>
      */
     public boolean hasEnderecoOrigem() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>required string enderecoOrigem = 2;</code>
@@ -1153,12 +1056,12 @@ public final class Rotas {
     }
 
     public static final int ENDERECODESTINO_FIELD_NUMBER = 3;
-    private volatile java.lang.Object enderecoDestino_;
+    private java.lang.Object enderecoDestino_;
     /**
      * <code>required string enderecoDestino = 3;</code>
      */
     public boolean hasEnderecoDestino() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required string enderecoDestino = 3;</code>
@@ -1195,12 +1098,12 @@ public final class Rotas {
     }
 
     public static final int TAMANHO_FIELD_NUMBER = 4;
-    private volatile java.lang.Object tamanho_;
+    private java.lang.Object tamanho_;
     /**
      * <code>required string tamanho = 4;</code>
      */
     public boolean hasTamanho() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required string tamanho = 4;</code>
@@ -1271,16 +1174,18 @@ public final class Rotas {
       return passo_.get(index);
     }
 
+    private void initFields() {
+      enderecoOrigem_ = "";
+      enderecoDestino_ = "";
+      tamanho_ = "";
+      passo_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasIdRota()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasEnderecoOrigem()) {
         memoizedIsInitialized = 0;
         return false;
@@ -1305,119 +1210,54 @@ public final class Rotas {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, idRota_);
+        output.writeBytes(2, getEnderecoOrigemBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, enderecoOrigem_);
+        output.writeBytes(3, getEnderecoDestinoBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, enderecoDestino_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tamanho_);
+        output.writeBytes(4, getTamanhoBytes());
       }
       for (int i = 0; i < passo_.size(); i++) {
         output.writeMessage(5, passo_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, idRota_);
+          .computeBytesSize(2, getEnderecoOrigemBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, enderecoOrigem_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getEnderecoDestinoBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, enderecoDestino_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tamanho_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getTamanhoBytes());
       }
       for (int i = 0; i < passo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, passo_.get(i));
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Rotas.Rota)) {
-        return super.equals(obj);
-      }
-      Rotas.Rota other = (Rotas.Rota) obj;
-
-      boolean result = true;
-      result = result && (hasIdRota() == other.hasIdRota());
-      if (hasIdRota()) {
-        result = result && (getIdRota()
-            == other.getIdRota());
-      }
-      result = result && (hasEnderecoOrigem() == other.hasEnderecoOrigem());
-      if (hasEnderecoOrigem()) {
-        result = result && getEnderecoOrigem()
-            .equals(other.getEnderecoOrigem());
-      }
-      result = result && (hasEnderecoDestino() == other.hasEnderecoDestino());
-      if (hasEnderecoDestino()) {
-        result = result && getEnderecoDestino()
-            .equals(other.getEnderecoDestino());
-      }
-      result = result && (hasTamanho() == other.hasTamanho());
-      if (hasTamanho()) {
-        result = result && getTamanho()
-            .equals(other.getTamanho());
-      }
-      result = result && getPassoList()
-          .equals(other.getPassoList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (hasIdRota()) {
-        hash = (37 * hash) + IDROTA_FIELD_NUMBER;
-        hash = (53 * hash) + getIdRota();
-      }
-      if (hasEnderecoOrigem()) {
-        hash = (37 * hash) + ENDERECOORIGEM_FIELD_NUMBER;
-        hash = (53 * hash) + getEnderecoOrigem().hashCode();
-      }
-      if (hasEnderecoDestino()) {
-        hash = (37 * hash) + ENDERECODESTINO_FIELD_NUMBER;
-        hash = (53 * hash) + getEnderecoDestino().hashCode();
-      }
-      if (hasTamanho()) {
-        hash = (37 * hash) + TAMANHO_FIELD_NUMBER;
-        hash = (53 * hash) + getTamanho().hashCode();
-      }
-      if (getPassoCount() > 0) {
-        hash = (37 * hash) + PASSO_FIELD_NUMBER;
-        hash = (53 * hash) + getPassoList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static Rotas.Rota parseFrom(
@@ -1443,57 +1283,46 @@ public final class Rotas {
     }
     public static Rotas.Rota parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.Rota parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static Rotas.Rota parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static Rotas.Rota parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static Rotas.Rota parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.Rota parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(Rotas.Rota prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1501,7 +1330,7 @@ public final class Rotas {
      * Protobuf type {@code Rota}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:Rota)
         Rotas.RotaOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1509,7 +1338,7 @@ public final class Rotas {
         return Rotas.internal_static_Rota_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Rotas.internal_static_Rota_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1522,33 +1351,38 @@ public final class Rotas {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getPassoFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
-        idRota_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         enderecoOrigem_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         enderecoDestino_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         tamanho_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (passoBuilder_ == null) {
           passo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           passoBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1575,23 +1409,19 @@ public final class Rotas {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.idRota_ = idRota_;
+        result.enderecoOrigem_ = enderecoOrigem_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.enderecoOrigem_ = enderecoOrigem_;
+        result.enderecoDestino_ = enderecoDestino_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.enderecoDestino_ = enderecoDestino_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.tamanho_ = tamanho_;
         if (passoBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             passo_ = java.util.Collections.unmodifiableList(passo_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.passo_ = passo_;
         } else {
@@ -1602,32 +1432,6 @@ public final class Rotas {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof Rotas.Rota) {
           return mergeFrom((Rotas.Rota)other);
@@ -1639,21 +1443,18 @@ public final class Rotas {
 
       public Builder mergeFrom(Rotas.Rota other) {
         if (other == Rotas.Rota.getDefaultInstance()) return this;
-        if (other.hasIdRota()) {
-          setIdRota(other.getIdRota());
-        }
         if (other.hasEnderecoOrigem()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
           enderecoOrigem_ = other.enderecoOrigem_;
           onChanged();
         }
         if (other.hasEnderecoDestino()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
           enderecoDestino_ = other.enderecoDestino_;
           onChanged();
         }
         if (other.hasTamanho()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
           tamanho_ = other.tamanho_;
           onChanged();
         }
@@ -1661,7 +1462,7 @@ public final class Rotas {
           if (!other.passo_.isEmpty()) {
             if (passo_.isEmpty()) {
               passo_ = other.passo_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensurePassoIsMutable();
               passo_.addAll(other.passo_);
@@ -1674,35 +1475,35 @@ public final class Rotas {
               passoBuilder_.dispose();
               passoBuilder_ = null;
               passo_ = other.passo_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
               passoBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getPassoFieldBuilder() : null;
             } else {
               passoBuilder_.addAllMessages(other.passo_);
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasIdRota()) {
-          return false;
-        }
         if (!hasEnderecoOrigem()) {
+          
           return false;
         }
         if (!hasEnderecoDestino()) {
+          
           return false;
         }
         if (!hasTamanho()) {
+          
           return false;
         }
         for (int i = 0; i < getPassoCount(); i++) {
           if (!getPasso(i).isInitialized()) {
+            
             return false;
           }
         }
@@ -1718,7 +1519,7 @@ public final class Rotas {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (Rotas.Rota) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1728,44 +1529,12 @@ public final class Rotas {
       }
       private int bitField0_;
 
-      private int idRota_ ;
-      /**
-       * <code>required int32 idRota = 1;</code>
-       */
-      public boolean hasIdRota() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 idRota = 1;</code>
-       */
-      public int getIdRota() {
-        return idRota_;
-      }
-      /**
-       * <code>required int32 idRota = 1;</code>
-       */
-      public Builder setIdRota(int value) {
-        bitField0_ |= 0x00000001;
-        idRota_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 idRota = 1;</code>
-       */
-      public Builder clearIdRota() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        idRota_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object enderecoOrigem_ = "";
       /**
        * <code>required string enderecoOrigem = 2;</code>
        */
       public boolean hasEnderecoOrigem() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>required string enderecoOrigem = 2;</code>
@@ -1808,7 +1577,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         enderecoOrigem_ = value;
         onChanged();
         return this;
@@ -1817,7 +1586,7 @@ public final class Rotas {
        * <code>required string enderecoOrigem = 2;</code>
        */
       public Builder clearEnderecoOrigem() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         enderecoOrigem_ = getDefaultInstance().getEnderecoOrigem();
         onChanged();
         return this;
@@ -1830,7 +1599,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000001;
         enderecoOrigem_ = value;
         onChanged();
         return this;
@@ -1841,7 +1610,7 @@ public final class Rotas {
        * <code>required string enderecoDestino = 3;</code>
        */
       public boolean hasEnderecoDestino() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required string enderecoDestino = 3;</code>
@@ -1884,7 +1653,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         enderecoDestino_ = value;
         onChanged();
         return this;
@@ -1893,7 +1662,7 @@ public final class Rotas {
        * <code>required string enderecoDestino = 3;</code>
        */
       public Builder clearEnderecoDestino() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         enderecoDestino_ = getDefaultInstance().getEnderecoDestino();
         onChanged();
         return this;
@@ -1906,7 +1675,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000002;
         enderecoDestino_ = value;
         onChanged();
         return this;
@@ -1917,7 +1686,7 @@ public final class Rotas {
        * <code>required string tamanho = 4;</code>
        */
       public boolean hasTamanho() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required string tamanho = 4;</code>
@@ -1960,7 +1729,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         tamanho_ = value;
         onChanged();
         return this;
@@ -1969,7 +1738,7 @@ public final class Rotas {
        * <code>required string tamanho = 4;</code>
        */
       public Builder clearTamanho() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         tamanho_ = getDefaultInstance().getTamanho();
         onChanged();
         return this;
@@ -1982,7 +1751,7 @@ public final class Rotas {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         tamanho_ = value;
         onChanged();
         return this;
@@ -1991,13 +1760,13 @@ public final class Rotas {
       private java.util.List<Rotas.Passo> passo_ =
         java.util.Collections.emptyList();
       private void ensurePassoIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           passo_ = new java.util.ArrayList<Rotas.Passo>(passo_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           Rotas.Passo, Rotas.Passo.Builder, Rotas.PassoOrBuilder> passoBuilder_;
 
       /**
@@ -2143,7 +1912,7 @@ public final class Rotas {
       public Builder clearPasso() {
         if (passoBuilder_ == null) {
           passo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           passoBuilder_.clear();
@@ -2213,67 +1982,30 @@ public final class Rotas {
            getPassoBuilderList() {
         return getPassoFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           Rotas.Passo, Rotas.Passo.Builder, Rotas.PassoOrBuilder> 
           getPassoFieldBuilder() {
         if (passoBuilder_ == null) {
-          passoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          passoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               Rotas.Passo, Rotas.Passo.Builder, Rotas.PassoOrBuilder>(
                   passo_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           passo_ = null;
         }
         return passoBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:Rota)
     }
 
-    // @@protoc_insertion_point(class_scope:Rota)
-    private static final Rotas.Rota DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Rotas.Rota();
+      defaultInstance = new Rota(true);
+      defaultInstance.initFields();
     }
 
-    public static Rotas.Rota getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Rota>
-        PARSER = new com.google.protobuf.AbstractParser<Rota>() {
-      public Rota parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Rota(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Rota> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Rota> getParserForType() {
-      return PARSER;
-    }
-
-    public Rotas.Rota getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:Rota)
   }
 
   public interface ListaRotaOrBuilder extends
@@ -2307,28 +2039,37 @@ public final class Rotas {
   /**
    * Protobuf type {@code ListaRota}
    */
-  public  static final class ListaRota extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ListaRota extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:ListaRota)
       ListaRotaOrBuilder {
     // Use ListaRota.newBuilder() to construct.
-    private ListaRota(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ListaRota(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private ListaRota() {
-      rota_ = java.util.Collections.emptyList();
+    private ListaRota(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ListaRota defaultInstance;
+    public static ListaRota getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public ListaRota getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
     private ListaRota(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2352,8 +2093,7 @@ public final class Rotas {
                 rota_ = new java.util.ArrayList<Rotas.Rota>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              rota_.add(
-                  input.readMessage(Rotas.Rota.PARSER, extensionRegistry));
+              rota_.add(input.readMessage(Rotas.Rota.PARSER, extensionRegistry));
               break;
             }
           }
@@ -2362,7 +2102,7 @@ public final class Rotas {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+            e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           rota_ = java.util.Collections.unmodifiableList(rota_);
@@ -2376,11 +2116,26 @@ public final class Rotas {
       return Rotas.internal_static_ListaRota_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Rotas.internal_static_ListaRota_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               Rotas.ListaRota.class, Rotas.ListaRota.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ListaRota> PARSER =
+        new com.google.protobuf.AbstractParser<ListaRota>() {
+      public ListaRota parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ListaRota(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListaRota> getParserForType() {
+      return PARSER;
     }
 
     public static final int ROTA_FIELD_NUMBER = 1;
@@ -2418,6 +2173,9 @@ public final class Rotas {
       return rota_.get(index);
     }
 
+    private void initFields() {
+      rota_ = java.util.Collections.emptyList();
+    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2436,14 +2194,16 @@ public final class Rotas {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       for (int i = 0; i < rota_.size(); i++) {
         output.writeMessage(1, rota_.get(i));
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -2451,43 +2211,16 @@ public final class Rotas {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, rota_.get(i));
       }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Rotas.ListaRota)) {
-        return super.equals(obj);
-      }
-      Rotas.ListaRota other = (Rotas.ListaRota) obj;
-
-      boolean result = true;
-      result = result && getRotaList()
-          .equals(other.getRotaList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (getRotaCount() > 0) {
-        hash = (37 * hash) + ROTA_FIELD_NUMBER;
-        hash = (53 * hash) + getRotaList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static Rotas.ListaRota parseFrom(
@@ -2513,57 +2246,46 @@ public final class Rotas {
     }
     public static Rotas.ListaRota parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.ListaRota parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static Rotas.ListaRota parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static Rotas.ListaRota parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static Rotas.ListaRota parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return PARSER.parseFrom(input);
     }
     public static Rotas.ListaRota parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
+    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
     public static Builder newBuilder(Rotas.ListaRota prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2571,7 +2293,7 @@ public final class Rotas {
      * Protobuf type {@code ListaRota}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:ListaRota)
         Rotas.ListaRotaOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2579,7 +2301,7 @@ public final class Rotas {
         return Rotas.internal_static_ListaRota_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Rotas.internal_static_ListaRota_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2592,16 +2314,19 @@ public final class Rotas {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getRotaFieldBuilder();
         }
       }
+      private static Builder create() {
+        return new Builder();
+      }
+
       public Builder clear() {
         super.clear();
         if (rotaBuilder_ == null) {
@@ -2611,6 +2336,10 @@ public final class Rotas {
           rotaBuilder_.clear();
         }
         return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2646,32 +2375,6 @@ public final class Rotas {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof Rotas.ListaRota) {
           return mergeFrom((Rotas.ListaRota)other);
@@ -2702,21 +2405,21 @@ public final class Rotas {
               rota_ = other.rota_;
               bitField0_ = (bitField0_ & ~0x00000001);
               rotaBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRotaFieldBuilder() : null;
             } else {
               rotaBuilder_.addAllMessages(other.rota_);
             }
           }
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         for (int i = 0; i < getRotaCount(); i++) {
           if (!getRota(i).isInitialized()) {
+            
             return false;
           }
         }
@@ -2732,7 +2435,7 @@ public final class Rotas {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (Rotas.ListaRota) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
+          throw e;
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2751,7 +2454,7 @@ public final class Rotas {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           Rotas.Rota, Rotas.Rota.Builder, Rotas.RotaOrBuilder> rotaBuilder_;
 
       /**
@@ -2967,11 +2670,11 @@ public final class Rotas {
            getRotaBuilderList() {
         return getRotaFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           Rotas.Rota, Rotas.Rota.Builder, Rotas.RotaOrBuilder> 
           getRotaFieldBuilder() {
         if (rotaBuilder_ == null) {
-          rotaBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          rotaBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               Rotas.Rota, Rotas.Rota.Builder, Rotas.RotaOrBuilder>(
                   rota_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -2981,85 +2684,48 @@ public final class Rotas {
         }
         return rotaBuilder_;
       }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
 
       // @@protoc_insertion_point(builder_scope:ListaRota)
     }
 
-    // @@protoc_insertion_point(class_scope:ListaRota)
-    private static final Rotas.ListaRota DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Rotas.ListaRota();
+      defaultInstance = new ListaRota(true);
+      defaultInstance.initFields();
     }
 
-    public static Rotas.ListaRota getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ListaRota>
-        PARSER = new com.google.protobuf.AbstractParser<ListaRota>() {
-      public ListaRota parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ListaRota(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ListaRota> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ListaRota> getParserForType() {
-      return PARSER;
-    }
-
-    public Rotas.ListaRota getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(class_scope:ListaRota)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Passo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Passo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Rota_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Rota_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ListaRota_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ListaRota_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
+  private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
       "\n\013rotas.proto\"<\n\005Passo\022\021\n\tinstrucao\030\001 \002(" +
-      "\t\022\021\n\tdistancia\030\002 \002(\t\022\r\n\005tempo\030\003 \002(\t\"o\n\004R" +
-      "ota\022\016\n\006idRota\030\001 \002(\005\022\026\n\016enderecoOrigem\030\002 " +
-      "\002(\t\022\027\n\017enderecoDestino\030\003 \002(\t\022\017\n\007tamanho\030" +
-      "\004 \002(\t\022\025\n\005passo\030\005 \003(\0132\006.Passo\" \n\tListaRot" +
-      "a\022\023\n\004rota\030\001 \003(\0132\005.Rota"
+      "\t\022\021\n\tdistancia\030\002 \002(\t\022\r\n\005tempo\030\003 \002(\t\"_\n\004R" +
+      "ota\022\026\n\016enderecoOrigem\030\002 \002(\t\022\027\n\017enderecoD" +
+      "estino\030\003 \002(\t\022\017\n\007tamanho\030\004 \002(\t\022\025\n\005passo\030\005" +
+      " \003(\0132\006.Passo\" \n\tListaRota\022\023\n\004rota\030\001 \003(\0132" +
+      "\005.Rota"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3076,19 +2742,19 @@ public final class Rotas {
     internal_static_Passo_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_Passo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Passo_descriptor,
         new java.lang.String[] { "Instrucao", "Distancia", "Tempo", });
     internal_static_Rota_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Rota_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Rota_descriptor,
-        new java.lang.String[] { "IdRota", "EnderecoOrigem", "EnderecoDestino", "Tamanho", "Passo", });
+        new java.lang.String[] { "EnderecoOrigem", "EnderecoDestino", "Tamanho", "Passo", });
     internal_static_ListaRota_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_ListaRota_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ListaRota_descriptor,
         new java.lang.String[] { "Rota", });
   }
