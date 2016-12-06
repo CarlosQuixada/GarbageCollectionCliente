@@ -18,6 +18,12 @@ public class LixeiraController {
 	public String listarLixeiras(Model model){
 		Proxy proxy = new Proxy();
 		List<Lixeira> lixeiras = proxy.buscarLixeira();
+		for(Lixeira l : lixeiras){
+			System.out.println(l.getLocalizacao());
+			System.out.println(l.getPeso());
+			System.out.println(l.getStatusCapacidade());
+			System.out.println(l.getStatusColeta());
+		}
 		model.addAttribute("lixeiras",lixeiras);
 		return "lixeira/listarLixeiras";
 	}
@@ -26,6 +32,10 @@ public class LixeiraController {
 	public String calcularRota(Model model){
 		Proxy proxy = new Proxy();
 		List<Rota> listaRota = proxy.calcularRota();
+		for(Rota r : listaRota){
+			System.out.println(r.getEnderecoOrigem());
+			System.out.println(r.getEnderecoDestino());
+		}
 		model.addAttribute("listaRota",listaRota);
 		return"";
 	}
